@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int contarVogais(const char *str) {
+    int contador = 0;
+    char c;
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        c = tolower(str[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+int main() {
+    char string[100];
+
+    printf("Digite uma string: ");
+    fgets(string, sizeof(string), stdin);
+
+    string[strcspn(string, "\n")] = '\0';
+
+    int numVogais = contarVogais(string);
+    printf("O número de vogais na string é: %d\n", numVogais);
+
+    return 0;
+}
